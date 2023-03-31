@@ -9,9 +9,9 @@ class ReviewsCarousel extends Component {
 
   onClickRightArrow = () => {
     const {activeReviewIndex} = this.state
-    const {reviewsData} = this.props
+    const {reviewsList} = this.props
 
-    if (activeReviewIndex < reviewsData.length - 1) {
+    if (activeReviewIndex < reviewsList.length - 1) {
       this.setState(prevState => ({
         activeReviewIndex: prevState.activeReviewIndex + 1,
       }))
@@ -23,7 +23,7 @@ class ReviewsCarousel extends Component {
 
     return (
       <div className="review-container">
-        <img src={imgUrl} alt={`${username}-avatar`} />
+        <img src={imgUrl} alt={username} />
         <p className="username">{username}</p>
         <p className="company">{companyName}</p>
         <p className="description">{description}</p>
@@ -42,9 +42,9 @@ class ReviewsCarousel extends Component {
   }
 
   render() {
-    const {reviewsData} = this.props
+    const {reviewsList} = this.props
     const {activeReviewIndex} = this.state
-    const currentReviewData = reviewsData[activeReviewIndex]
+    const currentReviewData = reviewsList[activeReviewIndex]
 
     return (
       <div className="reviews-container">
@@ -58,7 +58,7 @@ class ReviewsCarousel extends Component {
           >
             <img
               src="https://assets.ccbp.in/frontend/react-js/left-arrow-img.png"
-              alt="left-arrow"
+              alt="left arrow"
             />
           </button>
           {this.renderActiveReview(currentReviewData)}
@@ -70,7 +70,7 @@ class ReviewsCarousel extends Component {
           >
             <img
               src="https://assets.ccbp.in/frontend/react-js/right-arrow-img.png"
-              alt="right-arrow"
+              alt="right arrow"
             />
           </button>
         </div>
